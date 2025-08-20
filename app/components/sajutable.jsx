@@ -56,10 +56,10 @@ export default function SajuTable() {
         <div className="text-2xl font-semibold">{dateTime}</div>
       </div>
 
-      <table className="border-collapse w-full max-w-full text-center text-3xl min-w-min">
+      <table className="border-collapse w-full text-center text-3xl min-w-min">
         <thead>
           <tr>
-            <th className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 min-w-[64px] max-w-[80px] w-[15%] h-12 text-sm md:text-base lg:text-lg"></th>{" "}
+            <th className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 min-w-[64px] max-w-[80px] w-[15%] h-12 text-sm md:text-base lg:text-lg"></th>
             {headers.map((h, i) => (
               <th
                 key={i}
@@ -70,12 +70,13 @@ export default function SajuTable() {
             ))}
           </tr>
         </thead>
+
         <tbody>
           {tenDeities.map((row, i) => (
             <tr key={i}>
               {/* 좌측 열 */}
               <td className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800  text-sm min-w-[64px] font-bold max-w-[80px] w-[15%]">
-                {row.label}
+                十星
                 <div className="text-[9px] flex flex-col font-bold items-center justify-center">
                   (십성)
                 </div>
@@ -154,12 +155,14 @@ export default function SajuTable() {
               {row.values.map((item, j) => (
                 <td
                   key={j}
-                  className="border-t-0 border-l-0 p-2 border-b-2 border-r-1 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 font-bold text-lg bg-[#FDFDFB]"
+                  className="border-t-0 border-l-0 p-2 border-b-2 border-r-1 pb-3 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 font-bold text-lg bg-[#FDFDFB]"
                 >
                   {row.label === "貴人"
-                    ? item
-                        .split(",")
-                        .map((line, index) => <div key={index}>{line}</div>)
+                    ? item.split(",").map((line, index) => (
+                        <div className="pb-4 " key={index}>
+                          {line}
+                        </div>
+                      ))
                     : item}
                 </td>
               ))}
