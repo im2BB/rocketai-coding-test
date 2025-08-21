@@ -4,7 +4,7 @@ import React from "react";
 /** 공통 셀 컴포넌트 */
 function TableCell({ char, element }) {
   return (
-    <td className="border-t-0 border-l-0 p-2 border-b-2 border-r-1 pt-3 pb-3 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 font-bold text-sm bg-[#FDFDFB]">
+    <td className="border-t-0 border-l-0 p-1 border-b-2 border-r-1  border-gray-800 w-[calc(85%/5)]  h-12 font-bold text-xl bg-[#FDFDFB]">
       <div>{char}</div>
       {element && <div className="text-xs">{element}</div>}
     </td>
@@ -14,13 +14,13 @@ function TableCell({ char, element }) {
 /** 천간/지지용 셀 */
 function ElementBox({ char, element1, element2, color }) {
   return (
-    <td className="border-t-0 border-l-0 border-b-1 border-r-1 border-gray-800 w-[calc(85%/5)]  min-w-[70px] h-20 bg-[#FDFDFB]">
+    <td className="border-t-0 border-l-0 border-b-1 border-r-1 border-gray-800 w-[calc(85%/5)]  h-20 bg-[#FDFDFB]">
       <div
-        className={`w-full max-w-[62px] h-16 mx-auto rounded-2xl flex flex-col items-center justify-center ${color}`}
+        className={`w-full max-w-[72px] h-18.5 mx-auto rounded-2xl flex flex-col items-center justify-center ${color}`}
       >
-        <div className="text-[9px]">{element1}</div>
-        <div className="text-[min(4vw,1.5rem)] font-bold">{char}</div>
-        <div className="text-[9px]">{element2}</div>
+        <div className="text-xs">{element1}</div>
+        <div className="text-3xl font-bold">{char}</div>
+        <div className="text-xs">{element2}</div>
       </div>
     </td>
   );
@@ -30,7 +30,7 @@ function ElementBox({ char, element1, element2, color }) {
 function TableRow({ title, subtitle, data, renderCell }) {
   return (
     <tr>
-      <td className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 font-bold text-xs min-w-[64px] max-w-[80px] w-[15%]">
+      <td className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 font-bold text-lg min-w-[64px] max-w-[80px] w-[15%]">
         {title}
         <div className="text-[9px] flex flex-col items-center justify-center">
           {subtitle}
@@ -117,9 +117,9 @@ export default function SajuTable() {
 
   const twelvestages = [
     { char: "死", element: "(사)" },
-    { char: "帝旺", element: "(제왕왕)" },
+    { char: "帝旺", element: "(제왕)" },
     { char: "胎", element: "(태태)" },
-    { char: "長生", element: "(장생생)" },
+    { char: "長生", element: "(장생)" },
   ];
 
   const twelvegods = [
@@ -146,19 +146,19 @@ export default function SajuTable() {
   return (
     <div className="overflow-x-auto text-black">
       {/* 상단 사용자 정보 */}
-      <div className="text-center mt-8 mb-3">
-        <div className="text-sm font-semibold">{userName}의 사주</div>
-        <div className="text-2xl font-semibold">{dateTime}</div>
+      <div className="text-center mt-2 mb-5">
+        <div className="text-xl mb-2">{userName}의 사주</div>
+        <div className="text-2xl font-bold">{dateTime}</div>
       </div>
 
       <table className="border-collapse w-full text-center text-3xl min-w-min">
         <thead>
           <tr>
-            <th className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 min-w-[64px] max-w-[80px] w-[15%] h-12 text-xs md:text-base lg:text-sm"></th>
+            <th className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 min-w-[64px] max-w-[80px] w-[15%] h-12 text-xs md:text-base lg:text-lg"></th>
             {headers.map((h, i) => (
               <th
                 key={i}
-                className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 text-xl font-bold"
+                className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 text-2xl font-bold"
               >
                 {h}
               </th>
