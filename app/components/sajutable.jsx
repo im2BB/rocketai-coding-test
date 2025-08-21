@@ -4,7 +4,7 @@ import React from "react";
 /** 공통 셀 컴포넌트 */
 function TableCell({ char, element }) {
   return (
-    <td className="border-t-0 border-l-0 p-2 border-b-2 border-r-1 pb-3 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 font-bold text-lg bg-[#FDFDFB]">
+    <td className="border-t-0 border-l-0 p-2 border-b-2 border-r-1 pt-3 pb-3 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 font-bold text-sm bg-[#FDFDFB]">
       <div>{char}</div>
       {element && <div className="text-xs">{element}</div>}
     </td>
@@ -146,15 +146,15 @@ export default function SajuTable() {
   return (
     <div className="overflow-x-auto text-black">
       {/* 상단 사용자 정보 */}
-      <div className="text-center mb-5">
-        <div className="text-lg font-semibold">{userName}의 사주</div>
+      <div className="text-center mt-8 mb-3">
+        <div className="text-sm font-semibold">{userName}의 사주</div>
         <div className="text-2xl font-semibold">{dateTime}</div>
       </div>
 
       <table className="border-collapse w-full text-center text-3xl min-w-min">
         <thead>
           <tr>
-            <th className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 min-w-[64px] max-w-[80px] w-[15%] h-12 text-xs md:text-base lg:text-lg"></th>
+            <th className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 min-w-[64px] max-w-[80px] w-[15%] h-12 text-xs md:text-base lg:text-sm"></th>
             {headers.map((h, i) => (
               <th
                 key={i}
@@ -223,7 +223,7 @@ export default function SajuTable() {
             renderCell={(item, j) => (
               <td
                 key={j}
-                className="border-t-0 border-l-0 p-2 border-b-2 border-r-1 pb-3 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 font-bold text-lg bg-[#FDFDFB]"
+                className="border-t-0 border-l-0 p-2 border-b-2 border-r-1 pb-3 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 font-bold text-sm bg-[#FDFDFB]"
               >
                 {item.char && (
                   <>
