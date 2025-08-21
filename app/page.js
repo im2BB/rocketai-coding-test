@@ -35,7 +35,7 @@ export default function Home() {
           />
 
           {/* SajuPlain 컴포넌트 */}
-          <div className="absolute left-1/2 pl-8 pr-8 -translate-x-1/2 top-[67%] w-full max-w-[448px] pt-7 pointer-events-auto">
+          <div className="absolute left-1/2 pl-8 pr-8 -translate-x-1/2 top-[67%] w-full  pt-7 pointer-events-auto">
             <svg viewBox="0 0 448 700" preserveAspectRatio="xMidYMid meet">
               <foreignObject width="448" height="700">
                 <div
