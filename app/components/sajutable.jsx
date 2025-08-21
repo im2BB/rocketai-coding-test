@@ -1,50 +1,145 @@
 "use client";
 import React from "react";
 
+/** 공통 셀 컴포넌트 */
+function TableCell({ char, element }) {
+  return (
+    <td className="border-t-0 border-l-0 p-2 border-b-2 border-r-1 pb-3 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 font-bold text-lg bg-[#FDFDFB]">
+      <div>{char}</div>
+      {element && <div className="text-xs">{element}</div>}
+    </td>
+  );
+}
+
+/** 천간/지지용 셀 */
+function ElementBox({ char, element1, element2, color }) {
+  return (
+    <td className="border-t-0 border-l-0 border-b-1 border-r-1 border-gray-800 w-[calc(85%/5)]  min-w-[70px] h-20 bg-[#FDFDFB]">
+      <div
+        className={`w-full max-w-[62px] h-16 mx-auto rounded-2xl flex flex-col items-center justify-center ${color}`}
+      >
+        <div className="text-[9px]">{element1}</div>
+        <div className="text-[min(4vw,1.5rem)] font-bold">{char}</div>
+        <div className="text-[9px]">{element2}</div>
+      </div>
+    </td>
+  );
+}
+
+/** 행 단위 컴포넌트 */
+function TableRow({ title, subtitle, data, renderCell }) {
+  return (
+    <tr>
+      <td className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 font-bold text-xs min-w-[64px] max-w-[80px] w-[15%]">
+        {title}
+        <div className="text-[9px] flex flex-col items-center justify-center">
+          {subtitle}
+        </div>
+      </td>
+      {data.map((item, i) => renderCell(item, i))}
+    </tr>
+  );
+}
+
 export default function SajuTable() {
   const userName = "김로켓님";
   const dateTime = "1980년 8월 27일 08:10";
 
   const headers = ["時", "日", "月", "年"];
-  const tenDeities = [
-    { label: "十星", values: ["傷官", "比肩", "傷官", "傷官"] },
+
+  const tengods1 = [
+    { char: "傷官", element: "(상관)" },
+    { char: "比肩 ", element: "(비견)" },
+    { char: "傷官", element: "(상관)" },
+    { char: "傷官", element: "(상관)" },
   ];
+
   const heavenlyStems = [
-    { char: "壬", element: "陽水", color: "bg-[#2F2F2F] text-white" },
-    { char: "丁", element: "陰火", color: "bg-[#C23030] text-white" },
-    { char: "癸", element: "陰水", color: "bg-[#2F2F2F] text-white" },
-    { char: "癸", element: "陰水", color: "bg-[#2F2F2F] text-white" },
+    {
+      char: "壬",
+      element1: "임",
+      element2: "陽水",
+      color: "bg-[#2F2F2F] text-white",
+    },
+    {
+      char: "丁",
+      element1: "정",
+      element2: "陰火",
+      color: "bg-[#C23030] text-white",
+    },
+    {
+      char: "癸",
+      element1: "계",
+      element2: "陰水",
+      color: "bg-[#2F2F2F] text-white",
+    },
+    {
+      char: "癸",
+      element1: "계",
+      element2: "陰水",
+      color: "bg-[#2F2F2F] text-white",
+    },
   ];
+
   const earthlyBranches = [
-    { char: "寅", element: "陽木", color: "bg-[#18868C] text-white" },
-    { char: "巳", element: "陰火", color: "bg-[#C23030] text-white" },
-    { char: "亥", element: "陰水", color: "bg-[#2F2F2F] text-white" },
+    {
+      char: "寅",
+      element1: "인인",
+      element2: "陽木",
+      color: "bg-[#18868C] text-white",
+    },
+    {
+      char: "巳",
+      element1: "사",
+      element2: "陰火",
+      color: "bg-[#C23030] text-white",
+    },
+    {
+      char: "亥",
+      element1: "해",
+      element2: "陰水",
+      color: "bg-[#2F2F2F] text-white",
+    },
     {
       char: "酉",
-      element: "陰金",
+      element1: "유",
+      element2: "陰金",
       color: "bg-[#F9F9F9] text-black border border-black",
     },
   ];
-  const rows = [
+
+  const tengods2 = [
+    { char: "比肩", element: "(비견)" },
+    { char: "劫財 ", element: "(겹재)" },
+    { char: "食神", element: "(식신)" },
+    { char: "偏財", element: "(편재)" },
+  ];
+
+  const twelvestages = [
+    { char: "死", element: "(사)" },
+    { char: "帝旺", element: "(제왕왕)" },
+    { char: "胎", element: "(태태)" },
+    { char: "長生", element: "(장생생)" },
+  ];
+
+  const twelvegods = [
+    { char: "劫殺", element: "(겁살)" },
+    { char: "地劫", element: "(지살)" },
+    { char: "驛馬殺", element: "(역마살)" },
+    { char: "將星殺", element: "(장성살)" },
+  ];
+
+  const nobleman = [
+    { char: "", element: "(없음)" },
+    { char: "", element: "(없음)" },
+    { char: "天乙", element: "(천을귀인)" },
     {
-      label: "十神",
-      element: "(십성)",
-      values: ["比肩", "劫財", "食神", "偏財"],
-    },
-    {
-      label: "十二運星",
-      element: "(십이운성)",
-      values: ["死", "帝旺", "胎", "長生"],
-    },
-    {
-      label: "十二神殺",
-      element: "(십이신살)",
-      values: ["劫殺", "地劫", "驛馬殺", "將星殺"],
-    },
-    {
-      label: "貴人",
-      element: "(귀인)",
-      values: ["(없음)", "(없음)", "天乙", "天乙,太極,文昌"],
+      char1: "天乙",
+      char2: "太極",
+      char3: "文昌",
+      element1: "(천을귀인)",
+      element2: "(태극귀인)",
+      element3: "(문창귀인)",
     },
   ];
 
@@ -59,7 +154,7 @@ export default function SajuTable() {
       <table className="border-collapse w-full text-center text-3xl min-w-min">
         <thead>
           <tr>
-            <th className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 min-w-[64px] max-w-[80px] w-[15%] h-12 text-sm md:text-base lg:text-lg"></th>
+            <th className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 min-w-[64px] max-w-[80px] w-[15%] h-12 text-xs md:text-base lg:text-lg"></th>
             {headers.map((h, i) => (
               <th
                 key={i}
@@ -72,102 +167,90 @@ export default function SajuTable() {
         </thead>
 
         <tbody>
-          {tenDeities.map((row, i) => (
-            <tr key={i}>
-              {/* 좌측 열 */}
-              <td className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800  text-sm min-w-[64px] font-bold max-w-[80px] w-[15%]">
-                十星
-                <div className="text-[9px] flex flex-col font-bold items-center justify-center">
-                  (십성)
-                </div>
-              </td>
-              {/* 나머지 셀 배경색 적용 */}
-              {row.values.map((item, j) => (
-                <td
-                  key={j}
-                  className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 font-bold text-lg bg-[#FDFDFB]"
-                >
-                  {item}
-                </td>
-              ))}
-            </tr>
-          ))}
+          {/* 십성1 */}
+          <TableRow
+            title="十神"
+            subtitle="(십성)"
+            data={tengods1}
+            renderCell={(item, i) => <TableCell key={i} {...item} />}
+          />
 
-          {/* 천인인 행 */}
-          <tr>
-            <td className="border-t-0 border-l-0 border-b-1 border-r-2 border-gray-800 font-bold text-lg min-w-[64px] max-w-[80px] w-[15%]">
-              天干
-              <div className="text-[9px] font-bold flex flex-col items-center justify-center">
-                (천인)
-              </div>
-            </td>
-            {heavenlyStems.map((h, i) => (
+          {/* 천간 */}
+          <TableRow
+            title="天干"
+            subtitle="(천간)"
+            data={heavenlyStems}
+            renderCell={(item, i) => <ElementBox key={i} {...item} />}
+          />
+
+          {/* 지지 */}
+          <TableRow
+            title="地支"
+            subtitle="(지지)"
+            data={earthlyBranches}
+            renderCell={(item, i) => <ElementBox key={i} {...item} />}
+          />
+
+          {/* 십성2 */}
+          <TableRow
+            title="十神"
+            subtitle="(십성)"
+            data={tengods2}
+            renderCell={(item, i) => <TableCell key={i} {...item} />}
+          />
+
+          {/* 십이운성 */}
+          <TableRow
+            title="十二運星"
+            subtitle="(십이운성)"
+            data={twelvestages}
+            renderCell={(item, i) => <TableCell key={i} {...item} />}
+          />
+
+          {/* 십이신살 */}
+          <TableRow
+            title="十二神殺"
+            subtitle="(십이신살)"
+            data={twelvegods}
+            renderCell={(item, i) => <TableCell key={i} {...item} />}
+          />
+
+          {/* 귀인 */}
+          <TableRow
+            title="貴人"
+            subtitle="(귀인)"
+            data={nobleman}
+            renderCell={(item, j) => (
               <td
-                key={i}
-                className="border-t-0 border-l-0 border-b-1 border-r-1 border-gray-800 w-[calc(85%/5)]  min-w-[70px] h-20 bg-[#FDFDFB]"
+                key={j}
+                className="border-t-0 border-l-0 p-2 border-b-2 border-r-1 pb-3 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 font-bold text-lg bg-[#FDFDFB]"
               >
-                <div
-                  className={`w-full max-w-[62px] h-16 mx-auto rounded-2xl flex flex-col items-center justify-center ${h.color}`}
-                >
-                  <div className="text-[min(4vw,1.5rem)] font-bold">
-                    {h.char}
-                  </div>
-                  <div className="text-[9px]">{h.element}</div>
-                </div>
+                {item.char && (
+                  <>
+                    <div>{item.char}</div>
+                    <div className="text-xs">{item.element}</div>
+                  </>
+                )}
+                {item.char1 && (
+                  <>
+                    <div>
+                      <div>{item.char1}</div>
+                      <div className="text-xs">{item.element1}</div>
+                    </div>
+                    <div>
+                      <div>{item.char2}</div>
+                      <div className="text-xs">{item.element2}</div>
+                    </div>
+                    <div>
+                      <div>{item.char3}</div>
+                      <div className="text-xs">{item.element3}</div>
+                    </div>
+                  </>
+                )}
+                {!item.char && !item.char1 && <div>{item.element}</div>}
               </td>
-            ))}
-          </tr>
-
-          {/* 지지 행 */}
-          <tr>
-            <td className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 font-bold text-lg min-w-[64px] max-w-[80px] w-[15%]">
-              地支
-              <div className="text-[9px] flex flex-col font-bold  items-center justify-center">
-                (지지)
-              </div>
-            </td>
-            {earthlyBranches.map((e, i) => (
-              <td
-                key={i}
-                className="border-t-0 border-l-0 border-b-2 border-r-1 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-20 bg-[#FDFDFB]"
-              >
-                <div
-                  className={`w-full max-w-[62px] h-16 mx-auto rounded-2xl flex flex-col font-bold  items-center justify-center ${e.color}`}
-                >
-                  <div className="text-[min(4vw,1.5rem)] font-bold">
-                    {e.char}
-                  </div>
-                  <div className="text-[9px]">{e.element}</div>
-                </div>
-              </td>
-            ))}
-          </tr>
-
-          {/* 나머지 행 */}
-          {rows.map((row, i) => (
-            <tr key={i}>
-              <td className="border-t-0 border-l-0 border-b-2 border-r-2 border-gray-800 font-bold text-sm min-w-[64px] max-w-[80px] w-[15%]">
-                {row.label}
-                <div className="text-[9px] flex flex-col items-center justify-center">
-                  {row.element}
-                </div>
-              </td>
-              {row.values.map((item, j) => (
-                <td
-                  key={j}
-                  className="border-t-0 border-l-0 p-2 border-b-2 border-r-1 pb-3 border-gray-800 w-[calc(85%/5)] min-w-[70px] h-12 font-bold text-lg bg-[#FDFDFB]"
-                >
-                  {row.label === "貴人"
-                    ? item.split(",").map((line, index) => (
-                        <div className="pb-4 " key={index}>
-                          {line}
-                        </div>
-                      ))
-                    : item}
-                </td>
-              ))}
-            </tr>
-          ))}
+            )}
+          />
         </tbody>
       </table>
     </div>
