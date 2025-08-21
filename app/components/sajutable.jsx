@@ -227,22 +227,22 @@ export default function SajuTable() {
               >
                 {item.char && (
                   <>
-                    <div>{item.char}</div>
+                    <div className="text-lg">{item.char}</div>
                     <div className="text-xs">{item.element}</div>
                   </>
                 )}
                 {item.char1 && (
                   <>
                     <div>
-                      <div>{item.char1}</div>
+                      <div className="text-lg">{item.char1}</div>
                       <div className="text-xs">{item.element1}</div>
                     </div>
                     <div>
-                      <div>{item.char2}</div>
+                      <div className="text-lg">{item.char2}</div>
                       <div className="text-xs">{item.element2}</div>
                     </div>
                     <div>
-                      <div>{item.char3}</div>
+                      <div className="text-lg">{item.char3}</div>
                       <div className="text-xs">{item.element3}</div>
                     </div>
                   </>
