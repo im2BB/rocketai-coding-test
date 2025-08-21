@@ -13,7 +13,7 @@ export default function Home() {
         />
 
         <div className="absolute inset-0 w-full h-full pointer-events-none">
-          {/* 첫 번째 텍스트 블록 */}
+          {/* 첫 번째 텍스트 */}
           <OverlayText
             top="31.8%"
             left="18%"
@@ -25,16 +25,16 @@ export default function Home() {
             ]}
           />
 
-          {/* 두 번째 텍스트 블록 */}
+          {/* 두 번째 텍스트 */}
           <OverlayText
             top="49.51%"
             left="18%"
             translateX="1/3"
             className="pr-5"
-            texts={["제가 로켓님의 사주를", "보기 쉽게 표로 정리했어요"]}
+            texts={["제가 로켓님의 사주를", "보기 쉽게 표로 정리했어요."]}
           />
 
-          {/* SajuPlain 컴포넌트 */}
+          {/* 사주 플랜 컴포넌트 */}
           <div className="absolute left-1/2 pl-8 pr-8 -translate-x-1/2 top-[67%] w-full pt-7 pointer-events-auto">
             <svg viewBox="0 0 448 700" preserveAspectRatio="xMidYMid meet">
               <foreignObject width="448" height="700">
