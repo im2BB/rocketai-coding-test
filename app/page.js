@@ -1,6 +1,6 @@
 "use client";
 import SajuPlain from "./components/sajutable";
-import OverlayText from "./components/OverlayText";
+import OverlayText from "./components/overlaytext";
 
 export default function Home() {
   return (
