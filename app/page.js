@@ -30,7 +30,7 @@ export default function Home() {
             top="49.51%"
             left="18%"
             translateX="1/3"
-            className="font-medium pr-5"
+            className="pr-5"
             texts={["제가 로켓님의 사주를", "보기 쉽게 표로 정리했어요"]}
           />
 

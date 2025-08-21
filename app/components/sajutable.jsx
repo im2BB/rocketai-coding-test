@@ -146,8 +146,8 @@ export default function SajuTable() {
   return (
     <div className="overflow-x-auto text-black">
       {/* 상단 사용자 정보 */}
-      <div className="text-center mt-2 mb-5">
-        <div className="text-xl mb-2">{userName}의 사주</div>
+      <div className="text-center mt-2 mb-5 ">
+        <div className="text-xl mb-2 font-semibold">{userName}의 사주</div>
         <div className="text-2xl font-bold">{dateTime}</div>
       </div>
 

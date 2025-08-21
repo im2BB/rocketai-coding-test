@@ -14,6 +14,7 @@ export default function OverlayText({
         absolute 
         text-center 
         text-black 
+        font-semibold
         text-[min(3.5vw,1rem)] 
         max-w-[80%] 
         pointer-events-auto 
